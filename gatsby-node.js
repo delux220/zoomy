@@ -49,7 +49,7 @@ exports.createPages = async ({ graphql, actions }) => {
           const { slug } = post;
           createPage({
             path: `/listings/${slug}`,
-            component: path.resolve('./src/templates/Listing.js'),
+            component: path.resolve('./src/templates/listing.js'),
             context: {
               slug,
             },
