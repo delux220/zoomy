@@ -24,12 +24,9 @@ const Layout = ({ children, location }) => {
   }
   return (
     <SiteWrapper>
-      <Reboot />
-      <Global />
       <Header location={location} />
       {children}
       {renderModal()}
-      <Footer />
     </SiteWrapper>
   );
 };

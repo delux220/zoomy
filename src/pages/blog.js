@@ -1,14 +1,10 @@
 import React, { Fragment } from 'react';
 import { graphql, useStaticQuery, Link } from 'gatsby';
 import _map from 'lodash/map';
-
+import Listing from '../components/Listing';
+import { Button, Row, Col, Container } from 'react-bootstrap';
 import SEO from '../components/SEO';
-import {
-  PageWrapper,
-  PageInner,
-  PageTitle,
-  PostLink,
-} from '../components/Elements';
+import moment from 'moment';
 
 const blogQuery = graphql`
   {
@@ -18,14 +14,26 @@ const blogQuery = graphql`
         ...GatsbyDatoCmsSeoMetaTags
       }
     }
-    posts: allDatoCmsBlogPost(
+    posts: allDatoCmsListing(
       sort: { fields: [meta___createdAt], order: ASC }
     ) {
       edges {
         node {
           id
           title
+          host
           slug
+          content
+          image {
+          fluid(maxWidth: 600, imgixParams: { fm: "jpg", auto: "compress" }) {
+            ...GatsbyDatoCmsFluid
+          }
+
+        }
+        date
+        tags {
+          tagName
+        }
         }
       }
     }
@@ -39,19 +47,35 @@ export default function Blog() {
   return (
     <Fragment>
       <SEO meta={seoMetaTags} />
-      <PageWrapper>
-        <PageInner>
-          <PageTitle>{title}</PageTitle>
+      <section>
+      <div className="banner-1 cover-image sptb-2 sptb-tab bg-background2">
+        <div className="header-text mb-0">
+          <div className="container">
+            <div className="text-center text-white mb-7">
+              <h1 className="mb-1">Find Zoom Things To Do While In Quarantine</h1>
+              <p>Yep, we are all going to be inside for a bit. Here are some ways to stay connected.</p>
+            </div>
+           
+          </div>
+        </div>
+      </div>
+    </section>
+      <section className="sptb bg-white">
+      <Container>
+      <div className="section-title center-block text-center">
+          <h1>Upcoming Zooms</h1>
+          <p></p>
+        </div>
+          <Row>
           {_map(edges, post => (
-            <PostLink key={post.node.id}>
-              <Link to={`/blog/${post.node.slug}/`}>{post.node.title}</Link>
-            </PostLink>
+            <Col md={4} className="mb-5">
+            <Listing listing={post}/>
+            </Col>
           ))}
-          <Link to="/">
-            <button css={{ marginLeft: '.5em' }}>Go Home</button>
-          </Link>
-        </PageInner>
-      </PageWrapper>
+          </Row>
+
+      </Container>
+          </section>
     </Fragment>
   );
 }

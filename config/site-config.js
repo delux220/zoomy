@@ -1,5 +1,5 @@
 module.exports = {
-  siteUrl: 'https://gatsby-datocms-starter.netlify.com',
+  siteUrl: 'https://hungry-shockley-09fc7a.netlify.com',
   sitemapPath: '/sitemap.xml',
   title: 'Gatsby DatoCMS Starter',
   description: 'Website Description',

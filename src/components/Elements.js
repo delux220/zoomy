@@ -4,12 +4,11 @@ import { font, colors, z, bz } from '../consts/style';
 import { fadeInUp } from '../style/animations';
 
 export const PageWrapper = styled.div`
-  height: calc(100vh - 10rem);
-  display: flex;
+  min-height: calc(100vh - 10rem);
+
   justify-content: center;
   align-items: center;
   max-width: 100%;
-  padding: 2rem;
 `;
 
 export const PageInner = styled.div`

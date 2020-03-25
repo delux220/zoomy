@@ -12,6 +12,10 @@ export const blogPostTypes = {
   data: PropTypes.object.isRequired,
 };
 
+export const listingTypes = {
+  data: PropTypes.object.isRequired,
+};
+
 export const layoutTypes = {
   children: PropTypes.node.isRequired,
   location: PropTypes.object.isRequired,
