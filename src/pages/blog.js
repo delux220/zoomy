@@ -14,9 +14,7 @@ const blogQuery = graphql`
         ...GatsbyDatoCmsSeoMetaTags
       }
     }
-    posts: allDatoCmsListing(
-      sort: { fields: [meta___createdAt], order: ASC }
-    ) {
+    posts: allDatoCmsListing(sort: { fields: [meta___createdAt], order: ASC }) {
       edges {
         node {
           id
@@ -25,15 +23,14 @@ const blogQuery = graphql`
           slug
           content
           image {
-          fluid(maxWidth: 600, imgixParams: { fm: "jpg", auto: "compress" }) {
-            ...GatsbyDatoCmsFluid
+            fluid(maxWidth: 600, imgixParams: { fm: "jpg", auto: "compress" }) {
+              ...GatsbyDatoCmsFluid
+            }
           }
-
-        }
-        date
-        tags {
-          tagName
-        }
+          date
+          tags {
+            tagName
+          }
         }
       }
     }
@@ -48,34 +45,37 @@ export default function Blog() {
     <Fragment>
       <SEO meta={seoMetaTags} />
       <section>
-      <div className="banner-1 cover-image sptb-2 sptb-tab bg-background2">
-        <div className="header-text mb-0">
-          <div className="container">
-            <div className="text-center text-white mb-7">
-              <h1 className="mb-1">Find Zoom Things To Do While In Quarantine</h1>
-              <p>Yep, we are all going to be inside for a bit. Here are some ways to stay connected.</p>
+        <div className="banner-1 cover-image sptb-2 sptb-tab bg-background2">
+          <div className="header-text mb-0">
+            <div className="container">
+              <div className="text-center text-white mb-7">
+                <h1 className="mb-1">
+                  Find Zoom Things To Do While In Quarantine
+                </h1>
+                <p>
+                  Yep, we are all going to be inside for a bit. Here are some
+                  ways to stay connected.
+                </p>
+              </div>
             </div>
-           
           </div>
         </div>
-      </div>
-    </section>
+      </section>
       <section className="sptb bg-white">
-      <Container>
-      <div className="section-title center-block text-center">
-          <h1>Upcoming Zooms</h1>
-          <p></p>
-        </div>
+        <Container>
+          <div className="section-title center-block text-center">
+            <h1>Upcoming Zooms</h1>
+            <p></p>
+          </div>
           <Row>
-          {_map(edges, post => (
-            <Col md={4} className="mb-5">
-            <Listing listing={post}/>
-            </Col>
-          ))}
+            {_map(edges, post => (
+              <Col md={4} className="mb-5">
+                <Listing listing={post} />
+              </Col>
+            ))}
           </Row>
-
-      </Container>
-          </section>
+        </Container>
+      </section>
     </Fragment>
   );
 }
