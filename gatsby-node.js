@@ -62,6 +62,35 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   });
 
+    const createNeigborhoods = new Promise((resolve, reject) => {
+    try {
+      graphql(`
+        {
+          allDatoCmsNeighborhood {
+            nodes {
+              slug
+            }
+          }
+        }
+      `).then(res => {
+        const posts = res.data.allDatoCmsNeighborhood.nodes;
+        posts.map(post => {
+          const { slug } = post;
+          createPage({
+            path: `/neighborhoods/${slug}`,
+            component: path.resolve('./src/templates/Neighborhood.js'),
+            context: {
+              slug,
+            },
+          });
+        });
+        resolve();
+      });
+    } catch (error) {
+      reject(error);
+    }
+  });
+
   // eslint-disable-next-line
   return Promise.all([createBlogsPosts]);
 };

@@ -19,17 +19,12 @@ const blogQuery = graphql`
         node {
           id
           title
-          host
           slug
           content
           image {
             fluid(maxWidth: 600, imgixParams: { fm: "jpg", auto: "compress" }) {
               ...GatsbyDatoCmsFluid
             }
-          }
-          date
-          tags {
-            tagName
           }
         }
       }

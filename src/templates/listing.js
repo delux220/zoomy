@@ -11,10 +11,8 @@ const Listing = ({ data }) => {
     seoMetaTags,
     title,
     contentNode,
-    host,
+    link,
     image,
-    date,
-    tags,
     slug,
   } = data.listing;
 
@@ -122,8 +120,6 @@ export const projectQuery = graphql`
   query($slug: String!) {
     listing: datoCmsListing(slug: { eq: $slug }) {
       title
-
-      host
       slug
       contentNode {
         internal {
@@ -134,10 +130,6 @@ export const projectQuery = graphql`
         fluid(maxWidth: 600, imgixParams: { fm: "jpg", auto: "compress" }) {
           ...GatsbyDatoCmsFluid
         }
-      }
-      date
-      tags {
-        tagName
       }
       seoMetaTags {
         ...GatsbyDatoCmsSeoMetaTags
