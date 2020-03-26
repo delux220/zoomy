@@ -68,9 +68,7 @@ const Listing = ({ data }) => {
             </div>
             <div className="col-xl-4 col-lg-4 col-md-12">
               <div className="card">
-                <div className="card-body">
-                 
-                </div>
+                <div className="card-body"></div>
               </div>
             </div>
           </div>

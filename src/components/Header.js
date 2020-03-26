@@ -69,9 +69,8 @@ export default function Header({ location }) {
               }}
             >
               <span style={{ color: 'rgba(255,255,255,1)', fontWeight: '300' }}>
-                queens<strong style={{ fontWeight: '900' }}>cards</strong>
+                cardsfor<strong style={{ fontWeight: '900' }}>queens</strong>
               </span>
-              .NYC
             </a>
             <div className="d-flex order-lg-2 ml-auto">
               <div className="dropdown">
