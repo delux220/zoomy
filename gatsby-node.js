@@ -33,7 +33,7 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   });
 
-  const createListings = new Promise((resolve, reject) => {
+  /*const createListings = new Promise((resolve, reject) => {
     try {
       graphql(`
         {
@@ -60,7 +60,7 @@ exports.createPages = async ({ graphql, actions }) => {
     } catch (error) {
       reject(error);
     }
-  });
+  });*/
 
     const createNeigborhoods = new Promise((resolve, reject) => {
     try {

@@ -9,11 +9,7 @@ import SEO from '../components/SEO';
 import Listing from '../components/Listing';
 
 const Neighborhood = ({ data }) => {
-  const {
-    name,
-    slug,
-    listings
-  } = data.neighborhood;
+  const { name, slug, listings } = data.neighborhood;
 
   return (
     <Fragment>
@@ -31,16 +27,13 @@ const Neighborhood = ({ data }) => {
           </div>
         </div>
       </div>
-      <section className="sptb" style={{minHeight:'100vh'}}>
+      <section className="sptb" style={{ minHeight: '100vh' }}>
         <div className="container">
           <div className="row">
-            <div className="col-xl-8 col-lg-8 col-md-12">
-              
-            </div>
-            
+            <div className="col-xl-8 col-lg-8 col-md-12"></div>
           </div>
           <div className="row">
-             {_map(listings, post => (
+            {_map(listings, post => (
               <Col md={4} className="mb-5">
                 <Listing listing={post} />
               </Col>
@@ -58,18 +51,18 @@ export const projectQuery = graphql`
       name
       slug
       listings {
-          id
-          title
-          address
-          slug
-          link
-          content
-          image {
-        fluid(maxWidth: 600, imgixParams: { fm: "jpg", auto: "compress" }) {
-          ...GatsbyDatoCmsFluid
+        id
+        title
+        address
+        slug
+        link
+        content
+        image {
+          fluid(maxWidth: 600, imgixParams: { fm: "jpg", auto: "compress" }) {
+            ...GatsbyDatoCmsFluid
+          }
         }
       }
-        }
     }
   }
 `;

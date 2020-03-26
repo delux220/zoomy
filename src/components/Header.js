@@ -23,7 +23,9 @@ const Image = styled(Img)`
 
 const headerQuery = graphql`
   {
-    neighborhoods: allDatoCmsNeighborhood(sort: { fields: [name], order: ASC }) {
+    neighborhoods: allDatoCmsNeighborhood(
+      sort: { fields: [name], order: ASC }
+    ) {
       edges {
         node {
           name
@@ -43,7 +45,7 @@ const headerQuery = graphql`
 
 export default function Header({ location }) {
   const data = useStaticQuery(headerQuery);
-  const {neighborhoods} = data;
+  const { neighborhoods } = data;
   console.log(data);
   /**
    * Oftentimes we'll have different UI state
@@ -56,8 +58,20 @@ export default function Header({ location }) {
       <div className="header py-4">
         <div className="container">
           <div className="d-flex">
-            <a className="header-brand" href="/" style={{color:'#fff', textTransform:'uppercase', fontSize:'14px', letterSpacing:'3px'}}>
-              <span style={{color:'rgba(255,255,255,1)', fontWeight:'300'}}>queens<strong style={{fontWeight:'900'}}>cards</strong></span>.NYC
+            <a
+              className="header-brand"
+              href="/"
+              style={{
+                color: '#fff',
+                textTransform: 'uppercase',
+                fontSize: '14px',
+                letterSpacing: '3px',
+              }}
+            >
+              <span style={{ color: 'rgba(255,255,255,1)', fontWeight: '300' }}>
+                queens<strong style={{ fontWeight: '900' }}>cards</strong>
+              </span>
+              .NYC
             </a>
             <div className="d-flex order-lg-2 ml-auto">
               <div className="dropdown">
@@ -103,18 +117,16 @@ export default function Header({ location }) {
           <div className="row align-items-center">
             <div className="col-lg order-lg-first">
               <ul className="nav nav-tabs border-0 flex-column flex-lg-row">
-                 
                 {_map(neighborhoods.edges, hood => (
                   <li className="nav-item">
-                       <Link to={`/neighborhoods/${hood.node.slug}`} className="nav-link">{hood.node.name.toUpperCase()}</Link>
-                       </li>
-                       ))}
-                
-                
-
-                
-                
-                
+                    <Link
+                      to={`/neighborhoods/${hood.node.slug}`}
+                      className="nav-link"
+                    >
+                      {hood.node.name.toUpperCase()}
+                    </Link>
+                  </li>
+                ))}
               </ul>
             </div>
           </div>

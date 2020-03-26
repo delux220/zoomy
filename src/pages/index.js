@@ -16,7 +16,7 @@ const indexQuery = graphql`
       heroTitle
       heroTagline
       heroImage {
-         fluid(maxWidth: 600, imgixParams: { fm: "jpg", auto: "compress" }) {
+        fluid(maxWidth: 600, imgixParams: { fm: "jpg", auto: "compress" }) {
           ...GatsbyDatoCmsFluid
         }
       }
@@ -49,16 +49,23 @@ export default function Index() {
     <Fragment>
       <SEO meta={seoMetaTags} />
       <section>
-        <div className="banner-1 cover-image sptb-2 sptb-tab bg-background2" style={{backgroundImage: `url('${heroImage.fluid.src}')`, backgroundSize:'cover', backgroundPosition: '-20%', height:'63vh', display:'flex', justifyContent:'center', alignItems:'center'}}>
+        <div
+          className="banner-1 cover-image sptb-2 sptb-tab bg-background2"
+          style={{
+            backgroundImage: `url('${heroImage.fluid.src}')`,
+            backgroundSize: 'cover',
+            backgroundPosition: '-20%',
+            height: '63vh',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
+        >
           <div className="header-text mb-0">
             <div className="container">
               <div className="text-center text-white mb-7">
-                <h1 className="mb-5 font-weight-bold">
-                  {heroTitle}
-                </h1>
-                <p>
-                  {heroTagline}
-                </p>
+                <h1 className="mb-5 font-weight-bold">{heroTitle}</h1>
+                <p>{heroTagline}</p>
               </div>
             </div>
           </div>

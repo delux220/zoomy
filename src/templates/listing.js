@@ -7,14 +7,7 @@ import { listingTypes } from '../types/propTypes';
 import SEO from '../components/SEO';
 
 const Listing = ({ data }) => {
-  const {
-    seoMetaTags,
-    title,
-    contentNode,
-    link,
-    image,
-    slug,
-  } = data.listing;
+  const { seoMetaTags, title, contentNode, link, image, slug } = data.listing;
 
   return (
     <Fragment>
@@ -76,19 +69,7 @@ const Listing = ({ data }) => {
             <div className="col-xl-4 col-lg-4 col-md-12">
               <div className="card">
                 <div className="card-body">
-                  <label>Organizer</label>
-                  <p>
-                    <Link to={'/'}>{host}</Link>
-                    <a href="#" target="_blank" className="float-right">
-                      <i className="fa fa-external-link mr-1" />
-                      Website
-                    </a>
-                  </p>
-                  <label>Instructor / Host</label>
-                  <p className="text-muted">Name</p>
-                  <a href="#" className="btn btn-primary btn-block">
-                    Go to Event
-                  </a>
+                 
                 </div>
               </div>
             </div>

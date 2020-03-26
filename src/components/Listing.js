@@ -9,15 +9,12 @@ function Listing(props) {
   console.log('here');
   console.log(props);
 
-      var post = props.listing;
+  var post = props.listing;
 
-      if (props.listing.node) {
-        post = props.listing.node;
-      }
-  
-       
+  if (props.listing.node) {
+    post = props.listing.node;
+  }
 
- 
   return (
     <div className="card mb-0">
       <div
@@ -50,7 +47,13 @@ function Listing(props) {
       <div className="card-footer">
         <div className="item-card2-footer">
           <div className="item-card2-footer-u">
-            <a className="btn btn-primary btn-block" href={post.link} target="_blank">Purchase Gift Card</a>
+            <a
+              className="btn btn-primary btn-block"
+              href={post.link}
+              target="_blank"
+            >
+              Purchase Gift Card
+            </a>
           </div>
         </div>
       </div>
