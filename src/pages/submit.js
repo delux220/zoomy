@@ -15,30 +15,12 @@ class SubmissionPage extends React.Component {
     this.submitLink = this.submitLink.bind(this);
   }
 
-  submitLink() {
-    var data = {
-      data: {
-        type: 'listing',
-        attributes: {
-          title: this.state.name,
-          address: this.state.address,
-          link: this.state.link,
-        },
-      },
-    };
-    fetch('https://site-api.datocms.com/items', {
-      method: 'post',
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
-        'X-Api-Version': '3',
-        Authorization: 'Bearer 56609ca1da5c632ce4754e820eb26c',
-        body: JSON.stringify(data),
-      },
-    }).then(function(response) {
-      console.lot(response);
-      return response.json();
-    });
+  submitLink(e) {
+    if (this.state.captcha == false) {
+      e.preventDefault();
+      return false;
+    }
+    return true;
   }
 
   handleChange(e) {
@@ -57,6 +39,7 @@ class SubmissionPage extends React.Component {
           <div className="container">
             <div className="row">
               <div className="col-xl-8 col-lg-9 col-md-12">
+              <form name="submission"  data-netlify="true" method="post" onSubmit={this.submitLink}>
                 <div className="card mt-5">
                   <div className="card-header">
                     <h3 className="card-title">Submit a Link</h3>
@@ -121,7 +104,7 @@ class SubmissionPage extends React.Component {
                       <div className="col-lg-12">
                         <button
                           className="btn btn-primary mt-5"
-                          onClick={this.submitLink}
+                          type="submit"
                         >
                           Submit Link
                         </button>
@@ -129,6 +112,7 @@ class SubmissionPage extends React.Component {
                     </div>
                   </div>
                 </div>
+                </form>
               </div>
               <div className="col-xl-4 col-lg-3 col-md-12">
                 <div className="card mt-5">

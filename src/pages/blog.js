@@ -33,9 +33,5 @@ const blogQuery = graphql`
 `;
 
 export default function Blog() {
-  return (
-    <Fragment>
-      
-    </Fragment>
-  );
+  return <Fragment></Fragment>;
 }
