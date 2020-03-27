@@ -29,9 +29,9 @@ function Listing(props) {
         <div className="item-card2">
           <div className="item-card2-desc">
             <div className="item-card2-text">
-              <Link to={`/listings/${post.slug}`} className="text-dark">
+              <a href={post.link} target="_blank" className="text-dark">
                 <h4 className="mb-0">{post.title}</h4>
-              </Link>
+              </a>
             </div>
             <div className="">
               <a href={post.link} target="_blank">

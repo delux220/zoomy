@@ -33,28 +33,37 @@ const Neighborhood = ({ data }) => {
               <h3 className="font-weight-bold">{name}</h3>
             </div>
           </div>
-          
+
           <div className="row">
             <div className="col-lg-12">
-            <div className="row">
-            {_map(listings, post => (
-              <Col md={4} className="mb-5">
-                <Listing listing={post} />
-              </Col>
-            ))}
-            </div>
+              <div className="row">
+                {_map(listings, post => (
+                  <Col md={4} className="mb-5">
+                    <Listing listing={post} />
+                  </Col>
+                ))}
+              </div>
             </div>
           </div>
           <div className="row">
             <div className="col-xl-8 col-lg-8 col-md-12">
-            <div className="card">
+              <div className="card">
                 <div className="card-header">
-                  <h3 className="card-title">Know a place in {name} that isn't listed?</h3>
+                  <h3 className="card-title">
+                    Know a place in {name} that isn't listed?
+                  </h3>
                 </div>
                 <div className="card-body">
-                  <p className="text-muted">Do you know of a business in Queens that offers gift cards that you would like to be listed?</p>
-                  <p className="text-muted">You can submit your information, and we will post it!</p>
-                  <Link to={'/submit'} className="btn btn-primary mt-2">Submit a Link</Link>
+                  <p className="text-muted">
+                    Do you know of a business in Queens that offers gift cards
+                    that you would like to be listed?
+                  </p>
+                  <p className="text-muted">
+                    You can submit your information, and we will post it!
+                  </p>
+                  <Link to={'/submit'} className="btn btn-primary mt-2">
+                    Submit a Link
+                  </Link>
                 </div>
               </div>
             </div>
