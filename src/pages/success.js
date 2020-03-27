@@ -12,8 +12,7 @@ const Success = props => (
         <p>We will review your submission.</p>
       </div>
     </Container>
-
-    </Fragment>
+  </Fragment>
 );
 
 export default Success;

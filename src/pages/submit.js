@@ -76,14 +76,13 @@ class SubmissionPage extends React.Component {
           <div className="container">
             <div className="row">
               <div className="col-xl-8 col-lg-9 col-md-12">
-                <form
+                <form action="/pages/success"
                   name="submission"
                   data-netlify="true"
                   method="post"
                   netlify-honeypot="bot-field"
                 >
-
-  <input type="hidden" name="form-name" value="submission" />
+                  <input type="hidden" name="form-name" value="submission" />
                   <input type="hidden" name="bot-field" />
                   <div className="card mt-5">
                     <div className="card-header">
@@ -139,8 +138,13 @@ class SubmissionPage extends React.Component {
                       <div className="row">
                         <div className="col-lg-12">
                           <div className="form-group">
-                            <label className="form-label">Your E-mail Address *</label>
-                            <small className="d-block text-muted mb-3">We will reach out to you if any further information is required.</small>
+                            <label className="form-label">
+                              Your E-mail Address *
+                            </label>
+                            <small className="d-block text-muted mb-3">
+                              We will reach out to you if any further
+                              information is required.
+                            </small>
                             <input
                               type="email"
                               name="email"
