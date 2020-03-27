@@ -5,22 +5,42 @@ import Listing from '../components/Listing';
 import { Button, Row, Col, Container } from 'react-bootstrap';
 import SEO from '../components/SEO';
 import moment from 'moment';
+import serialize from 'form-serialize';
+
 import ReCAPTCHA from 'react-google-recaptcha';
 
 class SubmissionPage extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { name: '', address: '', link: '', captcha: false };
+    this.state = { name: '', address: '', link: '', captcha: false, message: '', disabled: false, error: ''};
     this.handleChange = this.handleChange.bind(this);
     this.submitLink = this.submitLink.bind(this);
   }
 
   submitLink(e) {
+    e.preventDefault();
     if (this.state.captcha == false) {
-      e.preventDefault();
+      this.setState({error: 'Please confirm that you are not a robot!'});
       return false;
     }
-    return true;
+
+    this.setState({disabled: true}, function() {
+      var form = e.target;
+      var data = serialize(form);
+      console.log(data);
+      fetch(e.action, {
+        method: 'post',
+        body: data
+        }).then(function() {
+          this.setState({message: 'Thank you!'}, function() {
+            setTimeout(function() {
+              this.setState({name: '', address: '', link: '', disabled: false});
+            }.bind(this), 3000);
+          });
+      }.bind(this));
+    });
+    
+    
   }
 
   handleChange(e) {
@@ -100,11 +120,19 @@ class SubmissionPage extends React.Component {
                         />
                       </div>
                     </div>
+                    {this.state.message.length>0&&<div className="alert alert-success">
+                      <p>{this.state.message}</p>
+                    </div>}
+
+                    {this.state.error.length>0&&<div className="alert alert-danger">
+                      <p>{this.state.error}</p>
+                    </div>}
                     <div className="row">
                       <div className="col-lg-12">
                         <button
                           className="btn btn-primary mt-5"
                           type="submit"
+                          disabled={this.state.disabled}
                         >
                           Submit Link
                         </button>

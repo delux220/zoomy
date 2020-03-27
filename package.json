@@ -6,6 +6,7 @@
   "author": "Chase Ohlson <chase@chaseohlson.com>",
   "dependencies": {
     "bootstrap": "^4.4.1",
+    "form-serialize": "^0.7.2",
     "gatsby": "^2.19.12",
     "gatsby-image": "^2.2.40",
     "gatsby-plugin-anchor-links": "^1.0.11",
