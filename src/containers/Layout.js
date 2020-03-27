@@ -27,6 +27,7 @@ const Layout = ({ children, location }) => {
       <Header location={location} />
       {children}
       {renderModal()}
+      <Footer />
     </SiteWrapper>
   );
 };

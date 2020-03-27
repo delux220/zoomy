@@ -59,6 +59,7 @@ export default function Index() {
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
+            
           }}
         >
           <div className="header-text mb-0">
