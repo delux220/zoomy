@@ -66,5 +66,5 @@ exports.createPages = async ({ graphql, actions }) => {
   });
 
   // eslint-disable-next-line
-  return Promise.all([createBlogsPosts]);
+  return Promise.all([createNeigborhoods]);
 };
