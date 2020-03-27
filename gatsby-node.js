@@ -4,11 +4,11 @@ exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
 
   // eslint-disable-next-line
-  const createBlogsPosts = new Promise((resolve, reject) => {
+  /*const createBlogsPosts = new Promise((resolve, reject) => {
 
 
   /*const createListings = new Promise((resolve, reject) => {
-    try {
+    /* try {
       graphql(`
         {
           allDatoCmsListing {
