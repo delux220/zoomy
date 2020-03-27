@@ -16,7 +16,6 @@ const Neighborhood = ({ data }) => {
       <div className="bg-white border-bottom">
         <div className="container">
           <div className="page-header">
-            
             <ol className="breadcrumb">
               <li className="breadcrumb-item">
                 <Link to={'/'}>Neighborhoods</Link>
@@ -29,11 +28,11 @@ const Neighborhood = ({ data }) => {
       </div>
       <section className="sptb" style={{ minHeight: '100vh' }}>
         <div className="container">
-        <div className="row">
-          <div className="col-md-12 mb-5">
-            <h3 className="font-weight-bold">{name}</h3>
+          <div className="row">
+            <div className="col-md-12 mb-5">
+              <h3 className="font-weight-bold">{name}</h3>
+            </div>
           </div>
-        </div>
           <div className="row">
             <div className="col-xl-8 col-lg-8 col-md-12"></div>
           </div>
