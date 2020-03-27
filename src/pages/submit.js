@@ -76,7 +76,8 @@ class SubmissionPage extends React.Component {
           <div className="container">
             <div className="row">
               <div className="col-xl-8 col-lg-9 col-md-12">
-                <form action="/pages/success"
+                <form
+                  action="/pages/success"
                   name="submission"
                   data-netlify="true"
                   method="post"
