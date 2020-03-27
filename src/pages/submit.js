@@ -15,6 +15,7 @@ class SubmissionPage extends React.Component {
     this.state = {
       name: '',
       address: '',
+      email: '',
       link: '',
       captcha: false,
       message: '',
@@ -80,9 +81,10 @@ class SubmissionPage extends React.Component {
                   data-netlify="true"
                   method="post"
                   netlify-honeypot="bot-field"
-                  onSubmit={this.submitLink}
                 >
-                <input type="hidden" name="bot-field" />
+
+  <input type="hidden" name="form-name" value="submission" />
+                  <input type="hidden" name="bot-field" />
                   <div className="card mt-5">
                     <div className="card-header">
                       <h3 className="card-title">Submit a Link</h3>
@@ -136,13 +138,17 @@ class SubmissionPage extends React.Component {
                       </div>
                       <div className="row">
                         <div className="col-lg-12">
-                          <ReCAPTCHA
-                            type
-                            sitekey="6LcbaeQUAAAAANQixHAeBPjcNQhYwqDSFHt8M3jK"
-                            onChange={() => {
-                              this.setState({ captcha: true });
-                            }}
-                          />
+                          <div className="form-group">
+                            <label className="form-label">Your E-mail Address *</label>
+                            <small className="d-block text-muted mb-3">We will reach out to you if any further information is required.</small>
+                            <input
+                              type="email"
+                              name="email"
+                              className="form-control"
+                              placeholder="you@email.com"
+                              onChange={this.handleChange}
+                            />
+                          </div>
                         </div>
                       </div>
                       {this.state.message.length > 0 && (
@@ -159,7 +165,7 @@ class SubmissionPage extends React.Component {
                       <div className="row">
                         <div className="col-lg-12">
                           <button
-                            className="btn btn-primary mt-5"
+                            className="btn btn-primary mt-3"
                             type="submit"
                             disabled={this.state.disabled}
                           >
