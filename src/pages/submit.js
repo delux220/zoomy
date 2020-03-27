@@ -12,7 +12,15 @@ import ReCAPTCHA from 'react-google-recaptcha';
 class SubmissionPage extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { name: '', address: '', link: '', captcha: false, message: '', disabled: false, error: ''};
+    this.state = {
+      name: '',
+      address: '',
+      link: '',
+      captcha: false,
+      message: '',
+      disabled: false,
+      error: '',
+    };
     this.handleChange = this.handleChange.bind(this);
     this.submitLink = this.submitLink.bind(this);
   }
@@ -20,27 +28,35 @@ class SubmissionPage extends React.Component {
   submitLink(e) {
     e.preventDefault();
     if (this.state.captcha == false) {
-      this.setState({error: 'Please confirm that you are not a robot!'});
+      this.setState({ error: 'Please confirm that you are not a robot!' });
       return false;
     }
 
-    this.setState({disabled: true}, function() {
+    this.setState({ disabled: true }, function() {
       var form = e.target;
       var data = serialize(form);
       console.log(data);
       fetch(e.action, {
         method: 'post',
-        body: data
-        }).then(function() {
-          this.setState({message: 'Thank you!'}, function() {
-            setTimeout(function() {
-              this.setState({name: '', address: '', link: '', disabled: false});
-            }.bind(this), 3000);
+        body: data,
+      }).then(
+        function() {
+          this.setState({ message: 'Thank you!' }, function() {
+            setTimeout(
+              function() {
+                this.setState({
+                  name: '',
+                  address: '',
+                  link: '',
+                  disabled: false,
+                });
+              }.bind(this),
+              3000
+            );
           });
-      }.bind(this));
+        }.bind(this)
+      );
     });
-    
-    
   }
 
   handleChange(e) {
@@ -59,87 +75,100 @@ class SubmissionPage extends React.Component {
           <div className="container">
             <div className="row">
               <div className="col-xl-8 col-lg-9 col-md-12">
-              <form name="submission"  data-netlify="true" method="post" onSubmit={this.submitLink}>
-                <div className="card mt-5">
-                  <div className="card-header">
-                    <h3 className="card-title">Submit a Link</h3>
-                  </div>
-                  <div className="card-body">
-                    <div className="row">
-                      <div className="col-lg-12">
-                        <div className="form-group">
-                          <label className="form-label">Business Name *</label>
-                          <input
-                            type="text"
-                            name="name"
-                            class="form-control"
-                            placeholder="Local cafe"
-                            onChange={this.handleChange}
+                <form
+                  name="submission"
+                  data-netlify="true"
+                  method="post"
+                  netlify-honeypot="bot-field"
+                  onSubmit={this.submitLink}
+                >
+                <input type="hidden" name="bot-field" />
+                  <div className="card mt-5">
+                    <div className="card-header">
+                      <h3 className="card-title">Submit a Link</h3>
+                    </div>
+                    <div className="card-body">
+                      <div className="row">
+                        <div className="col-lg-12">
+                          <div className="form-group">
+                            <label className="form-label">
+                              Business Name *
+                            </label>
+                            <input
+                              type="text"
+                              name="name"
+                              class="form-control"
+                              placeholder="Local cafe"
+                              onChange={this.handleChange}
+                            />
+                          </div>
+                        </div>
+                      </div>
+                      <div className="row">
+                        <div className="col-lg-12">
+                          <div className="form-group">
+                            <label className="form-label">Address *</label>
+                            <input
+                              type="text"
+                              name="address"
+                              className="form-control"
+                              placeholder="71st Ave..."
+                              onChange={this.handleChange}
+                            />
+                          </div>
+                        </div>
+                      </div>
+                      <div className="row">
+                        <div className="col-lg-12">
+                          <div className="form-group">
+                            <label className="form-label">
+                              URL to Gift Card Purchase *
+                            </label>
+                            <input
+                              type="url"
+                              name="address"
+                              className="form-control"
+                              placeholder="https://..."
+                              onChange={this.handleChange}
+                            />
+                          </div>
+                        </div>
+                      </div>
+                      <div className="row">
+                        <div className="col-lg-12">
+                          <ReCAPTCHA
+                            type
+                            sitekey="6LcbaeQUAAAAANQixHAeBPjcNQhYwqDSFHt8M3jK"
+                            onChange={() => {
+                              this.setState({ captcha: true });
+                            }}
                           />
                         </div>
                       </div>
-                    </div>
-                    <div className="row">
-                      <div className="col-lg-12">
-                        <div className="form-group">
-                          <label className="form-label">Address *</label>
-                          <input
-                            type="text"
-                            name="address"
-                            className="form-control"
-                            placeholder="71st Ave..."
-                            onChange={this.handleChange}
-                          />
+                      {this.state.message.length > 0 && (
+                        <div className="alert alert-success">
+                          <p>{this.state.message}</p>
                         </div>
-                      </div>
-                    </div>
-                    <div className="row">
-                      <div className="col-lg-12">
-                        <div className="form-group">
-                          <label className="form-label">
-                            URL to Gift Card Purchase *
-                          </label>
-                          <input
-                            type="url"
-                            name="address"
-                            className="form-control"
-                            placeholder="https://..."
-                            onChange={this.handleChange}
-                          />
-                        </div>
-                      </div>
-                    </div>
-                    <div className="row">
-                      <div className="col-lg-12">
-                        <ReCAPTCHA
-                          type
-                          sitekey="6LcbaeQUAAAAANQixHAeBPjcNQhYwqDSFHt8M3jK"
-                          onChange={() => {
-                            this.setState({ captcha: true });
-                          }}
-                        />
-                      </div>
-                    </div>
-                    {this.state.message.length>0&&<div className="alert alert-success">
-                      <p>{this.state.message}</p>
-                    </div>}
+                      )}
 
-                    {this.state.error.length>0&&<div className="alert alert-danger">
-                      <p>{this.state.error}</p>
-                    </div>}
-                    <div className="row">
-                      <div className="col-lg-12">
-                        <button
-                          className="btn btn-primary mt-5"
-                          type="submit"
-                          disabled={this.state.disabled}
-                        >
-                          Submit Link
-                        </button>
+                      {this.state.error.length > 0 && (
+                        <div className="alert alert-danger">
+                          <p>{this.state.error}</p>
+                        </div>
+                      )}
+                      <div className="row">
+                        <div className="col-lg-12">
+                          <button
+                            className="btn btn-primary mt-5"
+                            type="submit"
+                            disabled={this.state.disabled}
+                          >
+                            Submit Link
+                          </button>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
                 </form>
               </div>
               <div className="col-xl-4 col-lg-3 col-md-12">
