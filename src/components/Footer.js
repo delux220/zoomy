@@ -31,12 +31,7 @@ const Footer = () => {
         <div className="p-0 border-top">
           <div className="container">
             <div className="p-2 text-center footer-links">
-              <Link to={'/how-it-works'} className="btn btn-link text-default">
-                How It Works
-              </Link>
-              <Link to={'/about'} className="btn btn-link text-default">
-                About
-              </Link>
+              
               <Link to={'/submit'} className="btn btn-link text-default">
                 Submit
               </Link>
@@ -47,17 +42,13 @@ const Footer = () => {
           <div className="container">
             <div className="row">
               <div className="col-lg-4 col-md-12">
-                <h6>About</h6>
+                <h6>About this site</h6>
                 <hr className="deep-purple  accent-2 mb-4 mt-0 d-inline-block mx-auto" />
                 <p className="text-muted">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Fugit amet numquam iure provident voluptate essequasi,
-                  veritatis totam voluptas nostrum.Lorem ipsum dolor sit amet,
-                  consectetur{' '}
+                  Just a quickly put together website listing out as many businesses with gift cards purchasable online
                 </p>
                 <p className="text-muted">
-                  Duis aute irure dolor in reprehenderit in voluptate velit esse
-                  cillum .
+                  We hope that you purchase a gift card from businesses that you've patroned regularly to help mitigate the impact of the NYC shutdown during the Covid-19 pandemic.
                 </p>
               </div>
 
@@ -74,24 +65,13 @@ const Footer = () => {
                 </ul>
               </div>
               <div className="col-lg-4 col-md-12">
-                <h6>Submit a Link</h6>
+                <h6>Know a Place That Needs Help?</h6>
                 <hr className="deep-purple  text-primary accent-2 mb-4 mt-0 d-inline-block mx-auto" />
                 <div className="clearfix"></div>
-                <div className="input-group w-70">
-                  <input
-                    type="text"
-                    className="form-control br-tl-3  br-bl-3 "
-                    placeholder="Email"
-                  />
-                  <div className="input-group-append ">
-                    <button
-                      type="button"
-                      className="btn btn-primary br-tr-3  br-br-3"
-                    >
-                      {' '}
-                      Subscribe{' '}
-                    </button>
-                  </div>
+                <div className="">
+                  <p className="text-muted">Submit a link to us. We have a simple form ready for you to send us information. We just ask that all submitted businesses offer a gift card purchasable online. 
+                    <br/><Link to={'/submit'} className="font-weight-bold text-primary">Go here to submit</Link>
+                  </p>
                 </div>
               </div>
             </div>
@@ -101,14 +81,10 @@ const Footer = () => {
           <div className="container">
             <div className="row d-flex">
               <div className="col-lg-12 col-sm-12  mt-2 mb-2 text-center ">
-                Copyright © 2019{' '}
-                <a href="#" className="fs-14 text-primary">
+                Copyright © 2020{' '}
+                <a href="#" className="fs-14 text-primary mr-2">
                   Cards for Qns
                 </a>
-                . Designed by{' '}
-                <a href="#" className="fs-14 text-primary">
-                  Spruko
-                </a>{' '}
                 All rights reserved.
               </div>
             </div>

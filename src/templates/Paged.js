@@ -7,16 +7,13 @@ import SEO from '../components/SEO';
 import { listingTypes } from '../types/propTypes';
 import moment from 'moment';
 
-
-
-
-const Paged= ({ data, pageContext }) => {
+const Paged = ({ data, pageContext }) => {
   const { title, seoMetaTags, heroTagline, heroTitle, heroImage } = data.page;
   const { edges } = data.posts;
 
   var pages = [];
   for (var i = 1; i <= pageContext.totalPages; i++) {
-    var page = {css: '', p: i};
+    var page = { css: '', p: i };
     if (i == pageContext.page) {
       page.css = 'active';
     }
@@ -25,9 +22,7 @@ const Paged= ({ data, pageContext }) => {
   return (
     <Fragment>
       <SEO meta={seoMetaTags} />
-      <section>
-        
-      </section>
+      <section></section>
       <section className="sptb bg-white">
         <Container>
           <div className="section-title center-block text-center">
@@ -44,27 +39,39 @@ const Paged= ({ data, pageContext }) => {
           <Row>
             <Col sm={12}>
               <ul className="pagination ">
-                      <li className="page-item page-prev">
-                        <Link className="page-link" to={`/${pageContext.prev}`} tabindex="-1">Prev</Link>
-                      </li>
-                      {_map(pages, page => (
-                        <li className={`page-item ${page.css}`}><Link className="page-link" to={`/${page.p}`}>{page.p}</Link></li>
-                      ))}
-                      
-                      <li className="page-item page-next">
-                        <Link className="page-link" to={`/${pageContext.next}`}>Next</Link>
-                      </li>
-                    </ul>
+                <li className="page-item page-prev">
+                  <Link
+                    className="page-link"
+                    to={`/${pageContext.prev}`}
+                    tabindex="-1"
+                  >
+                    Prev
+                  </Link>
+                </li>
+                {_map(pages, page => (
+                  <li className={`page-item ${page.css}`}>
+                    <Link className="page-link" to={`/${page.p}`}>
+                      {page.p}
+                    </Link>
+                  </li>
+                ))}
+
+                <li className="page-item page-next">
+                  <Link className="page-link" to={`/${pageContext.next}`}>
+                    Next
+                  </Link>
+                </li>
+              </ul>
             </Col>
           </Row>
         </Container>
       </section>
     </Fragment>
   );
-}
+};
 
 export const pagedQuery = graphql`
-query pagedQuerys($skip: Int) {
+  query pagedQuerys($skip: Int) {
     page: datoCmsBlogPage {
       title
       seoMetaTags {
@@ -78,7 +85,11 @@ query pagedQuerys($skip: Int) {
         }
       }
     }
-    posts: allDatoCmsListing(limit: 6, skip: $skip, sort: { fields: [meta___createdAt], order: ASC }) {
+    posts: allDatoCmsListing(
+      limit: 6
+      skip: $skip
+      sort: { fields: [meta___createdAt], order: ASC }
+    ) {
       edges {
         node {
           id
@@ -97,7 +108,6 @@ query pagedQuerys($skip: Int) {
     }
   }
 `;
-
 
 Paged.propTypes = listingTypes;
 

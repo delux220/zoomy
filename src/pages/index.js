@@ -6,7 +6,8 @@ import { Button, Row, Col, Container } from 'react-bootstrap';
 import SEO from '../components/SEO';
 import moment from 'moment';
 
-var indexQuery = graphql`{
+var indexQuery = graphql`
+  {
     page: datoCmsBlogPage {
       title
       seoMetaTags {
@@ -20,7 +21,10 @@ var indexQuery = graphql`{
         }
       }
     }
-    posts: allDatoCmsListing(limit: 6, sort: { fields: [meta___createdAt], order: ASC }) {
+    posts: allDatoCmsListing(
+      limit: 6
+      sort: { fields: [meta___createdAt], order: ASC }
+    ) {
       edges {
         node {
           id
@@ -39,7 +43,6 @@ var indexQuery = graphql`{
     }
   }
 `;
-
 
 export default function Index() {
   const data = useStaticQuery(indexQuery);
@@ -86,7 +89,13 @@ export default function Index() {
           </Row>
           <Row className="my-5">
             <Col sm={12}>
-              <Link to={'/2'} className="btn btn-outline-primary py-5 font-weight-bold btn-block"><i className="fa fa-arrow-right mr-2" />Find More Businesses</Link>
+              <Link
+                to={'/2'}
+                className="btn btn-outline-primary py-5 font-weight-bold btn-block"
+              >
+                <i className="fa fa-arrow-right mr-2" />
+                Find More Businesses
+              </Link>
             </Col>
           </Row>
         </Container>
@@ -94,4 +103,3 @@ export default function Index() {
     </Fragment>
   );
 }
-
