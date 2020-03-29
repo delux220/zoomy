@@ -46,7 +46,7 @@ const headerQuery = graphql`
 export default function Header({ location }) {
   const data = useStaticQuery(headerQuery);
   const { neighborhoods } = data;
-  console.log(data);
+
   /**
    * Oftentimes we'll have different UI state
    * based on the router location.  Do it here.
@@ -63,13 +63,12 @@ export default function Header({ location }) {
               to="/"
               style={{
                 color: '#fff',
-                textTransform: 'uppercase',
                 fontSize: '14px',
                 letterSpacing: '3px',
               }}
             >
               <span style={{ color: 'rgba(255,255,255,1)', fontWeight: '300' }}>
-                cards for<strong style={{ fontWeight: '900' }}> QNS</strong>
+                Cards for<strong style={{ fontWeight: '900' }}> QNS</strong>
               </span>
             </Link>
             <div className="d-flex order-lg-2 ml-auto">
@@ -80,26 +79,14 @@ export default function Header({ location }) {
                   data-toggle="dropdown"
                 >
                   <span className="ml-2 d-none d-lg-block">
-                    <span className="text-white d-none">Welcome!</span>
+                    <span className="text-white">
+                      <Link to={"/support"} className="btn btn-primary">Support this site!</Link>
+                    </span>
                   </span>
                 </a>
-                <div className="dropdown-menu dropdown-menu-right dropdown-menu-arrow ">
-                  <a className="dropdown-item" href="#">
-                    <i className="dropdown-icon icon icon-user"></i> My Profile
-                  </a>
-                  <a className="dropdown-item" href="#">
-                    <i className="dropdown-icon icon icon-speech"></i> Inbox
-                  </a>
-                  <a className="dropdown-item" href="#">
-                    <i className="dropdown-icon  icon icon-settings"></i>{' '}
-                    Account Settings
-                  </a>
-                  <a className="dropdown-item" href="login.html">
-                    <i className="dropdown-icon icon icon-power"></i> Log out
-                  </a>
-                </div>
               </div>
             </div>
+
             <a
               href="#"
               className="header-toggler d-lg-none ml-3 ml-lg-0"

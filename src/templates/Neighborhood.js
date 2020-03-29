@@ -10,11 +10,8 @@ import Listing from '../components/Listing';
 
 const Neighborhood = ({ data }) => {
   const { name, slug, listings } = data.neighborhood;
-  const seo = `{"id":"DatoCmsSeoMetaTags-DatoCmsBlogPage-4368629-en","tags":[{"tagName":"title","content":"Support Businesses in ${name} With Gift Card Purchases"},{"tagName":"meta","attributes":{"property":"og:title","content":"Support Businesses in ${name} With Gift Card Purchases"}},{"tagName":"meta","attributes":{"name":"twitter:title","content":"Support Businesses in ${name} With Gift Card Purchases"}},{"tagName":"meta","attributes":{"name":"description","content":"Find local businesses in Queens impacted by Covid-19. Buying a gift card can help them in the short term weather the shutdown in NYC."}},{"tagName":"meta","attributes":{"property":"og:description","content":"Find local businesses in Queens impacted by Covid-19. Buying a gift card can help them in the short term weather the shutdown in NYC."}},{"tagName":"meta","attributes":{"name":"twitter:description","content":"Find local businesses in Queens impacted by Covid-19. Buying a gift card can help them in the short term weather the shutdown in NYC."}},{"tagName":"meta","attributes":{"name":"twitter:card","content":"summary"}},{"tagName":"meta","attributes":{"property":"article:modified_time","content":"2020-03-28T19:40:19Z"}},{"tagName":"meta","attributes":{"property":"article:published_time","content":"2020-03-23T17:21:48Z"}},{"tagName":"meta","attributes":{"property":"og:locale","content":"en_EN"}},{"tagName":"meta","attributes":{"property":"og:type","content":"article"}},{"tagName":"meta","attributes":{"property":"og:site_name","content":"Cards for Queens"}},{"tagName":"meta","attributes":{"property":"og:image","content":"https://www.datocms-assets.com/24624/1585424394-nathan-hurst-mq1krsdb3ik-unsplash.jpg?w=1000&fit=max&fm=jpg"}},{"tagName":"meta","attributes":{"name":"twitter:image","content":"https://www.datocms-assets.com/24624/1585424394-nathan-hurst-mq1krsdb3ik-unsplash.jpg?w=1000&fit=max&fm=jpg"}}]}`;
-  const seoJson = JSON.parse(seo);
   return (
     <Fragment>
-    <SEO meta={seoJson}/>
       <div className="bg-white border-bottom">
         <div className="container">
           <div className="page-header">
@@ -41,7 +38,7 @@ const Neighborhood = ({ data }) => {
               <div className="row">
                 {_map(listings, post => (
                   <Col md={4} className="mb-5">
-                    <Listing listing={post} key={post.id}/>
+                    <Listing listing={post} key={post.id} />
                   </Col>
                 ))}
               </div>

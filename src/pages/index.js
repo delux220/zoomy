@@ -3,7 +3,8 @@ import { graphql, useStaticQuery, Link } from 'gatsby';
 import _map from 'lodash/map';
 import Listing from '../components/Listing';
 import { Button, Row, Col, Container } from 'react-bootstrap';
-import SEO from '../components/SEO';
+
+import { SEO, useSEO } from "gatsby-plugin-seo";
 import moment from 'moment';
 
 var indexQuery = graphql`
@@ -50,7 +51,11 @@ export default function Index() {
   const { edges } = data.posts;
   return (
     <Fragment>
-      <SEO meta={seoMetaTags} />
+     <SEO
+        title="Cards for QNS"
+        description="Purchase gift cards for Queens businesses to support them amidst the NYC shudown."
+        pagePath="/"
+        />
       <section>
         <div
           className="banner-1 cover-image sptb-2 sptb-tab bg-background2"

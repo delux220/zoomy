@@ -79,7 +79,14 @@ module.exports = {
       options: {
         apiToken: process.env.DATO_CMS_KEY,
       },
-    },
+    },{
+      resolve: "gatsby-plugin-seo",
+      options: {
+        siteName: "Cards for QNS",
+        defaultSiteImage: "https://www.datocms-assets.com/24624/1585424394-nathan-hurst-mq1krsdb3ik-unsplash.jpg",
+        siteUrl: "https://cardsforqns.com"
+      }
+    }
   ],
   developMiddleware: app => {
     app.use(

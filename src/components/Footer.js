@@ -28,16 +28,7 @@ const Footer = () => {
   return (
     <section>
       <footer className="bg-white">
-        <div className="p-0 border-top">
-          <div className="container">
-            <div className="p-2 text-center footer-links">
-              
-              <Link to={'/submit'} className="btn btn-link text-default">
-                Submit
-              </Link>
-            </div>
-          </div>
-        </div>
+        
         <div className="footer-main footer-main1">
           <div className="container">
             <div className="row">
@@ -45,10 +36,13 @@ const Footer = () => {
                 <h6>About this site</h6>
                 <hr className="deep-purple  accent-2 mb-4 mt-0 d-inline-block mx-auto" />
                 <p className="text-muted">
-                  Just a quickly put together website listing out as many businesses with gift cards purchasable online
+                  Just a quickly put together website listing out as many
+                  businesses with gift cards purchasable online
                 </p>
                 <p className="text-muted">
-                  We hope that you purchase a gift card from businesses that you've patroned regularly to help mitigate the impact of the NYC shutdown during the Covid-19 pandemic.
+                  We hope that you purchase a gift card from businesses that
+                  you've patroned regularly to help mitigate the impact of the
+                  NYC shutdown during the Covid-19 pandemic.
                 </p>
               </div>
 
@@ -69,8 +63,17 @@ const Footer = () => {
                 <hr className="deep-purple  text-primary accent-2 mb-4 mt-0 d-inline-block mx-auto" />
                 <div className="clearfix"></div>
                 <div className="">
-                  <p className="text-muted">Submit a link to us. We have a simple form ready for you to send us information. We just ask that all submitted businesses offer a gift card purchasable online. 
-                    <br/><Link to={'/submit'} className="font-weight-bold text-primary">Go here to submit</Link>
+                  <p className="text-muted">
+                    Submit a link to us. We have a simple form ready for you to
+                    send us information. We just ask that all submitted
+                    businesses offer a gift card purchasable online.
+                    <br />
+                    <Link
+                      to={'/submit'}
+                      className="font-weight-bold text-primary"
+                    >
+                      Go here to submit
+                    </Link>
                   </p>
                 </div>
               </div>
