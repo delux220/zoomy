@@ -80,7 +80,9 @@ export default function Header({ location }) {
                 >
                   <span className="ml-2 d-none d-lg-block">
                     <span className="text-white">
-                      <Link to={"/support"} className="btn btn-primary">Support this site!</Link>
+                      <Link to={'/support'} className="btn btn-primary">
+                        Support this site!
+                      </Link>
                     </span>
                   </span>
                 </a>

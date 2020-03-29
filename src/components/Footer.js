@@ -28,7 +28,6 @@ const Footer = () => {
   return (
     <section>
       <footer className="bg-white">
-        
         <div className="footer-main footer-main1">
           <div className="container">
             <div className="row">
