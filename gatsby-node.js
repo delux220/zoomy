@@ -65,6 +65,35 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   });
 
+    const createP2 = new Promise((resolve, reject) => {
+    try {
+      graphql(`
+        {
+          allDatoCmsPage{
+            nodes {
+              slug
+            }
+          }
+        }
+      `).then(res => {
+        const posts = res.data.allDatoCmsPage.nodes;
+        posts.map(post => {
+          const { slug } = post;
+          createPage({
+            path: `/pages/${slug}`,
+            component: path.resolve('./src/templates/Page.js'),
+            context: {
+              slug,
+            },
+          });
+        });
+        resolve();
+      });
+    } catch (error) {
+      reject(error);
+    }
+  });
+
     const createP = new Promise((resolve, reject) => {
     try {
       graphql(`
@@ -106,6 +135,8 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   });
 
+
+
   // eslint-disable-next-line
-  return Promise.all([createNeigborhoods, createP]);
+  return Promise.all([createNeigborhoods, createP, createP2]);
 };

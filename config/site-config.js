@@ -1,7 +1,7 @@
 module.exports = {
-  siteUrl: 'https://hungry-shockley-09fc7a.netlify.com',
+  siteUrl: 'https://cardsforqns.com',
   sitemapPath: '/sitemap.xml',
-  title: 'Gatsby DatoCMS Starter',
+  title: 'Card for QNS',
   description: 'Website Description',
-  author: '@chase_ohlson',
+  author: 'Dave Luke',
 };

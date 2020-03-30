@@ -95,6 +95,7 @@ export const pagedQuery = graphql`
           id
           title
           address
+          phone
           slug
           link
           content

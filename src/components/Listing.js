@@ -15,6 +15,11 @@ function Listing(props) {
     post = props.listing.node;
   }
 
+  var callLink = '';
+
+  if (post.phone != null && post.phone.length > 0) {
+    callLink = 'tel:'+(post.phone.replace('(','-').replace(')','-').replace(' ',''));
+  }
   return (
     <div className="card mb-0">
       <div
@@ -47,13 +52,16 @@ function Listing(props) {
       <div className="card-footer">
         <div className="item-card2-footer">
           <div className="item-card2-footer-u">
-            <a
+            {(post.link!=null&&post.link.length>0)?<a
               className="btn btn-primary btn-block"
               href={post.link}
               target="_blank"
             >
               Purchase Gift Card
-            </a>
+            </a>:<a
+              className="btn btn-primary btn-block"
+              href={callLink}
+            >Call {post.phone}</a>}
           </div>
         </div>
       </div>
