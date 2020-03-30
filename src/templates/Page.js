@@ -9,7 +9,7 @@ import SEO from '../components/SEO';
 import Listing from '../components/Listing';
 
 const Page = ({ data }) => {
-  const { title, image,  slug, content } = data.page;
+  const { title, image, slug, content } = data.page;
   return (
     <Fragment>
       <div className="bg-white border-bottom">
@@ -20,7 +20,9 @@ const Page = ({ data }) => {
                 <Link to={'/'}>Home</Link>
               </li>
 
-              <li className="breadcrumb-item active"><Link to={'/pages/'+slug}>{title}</Link></li>
+              <li className="breadcrumb-item active">
+                <Link to={'/pages/' + slug}>{title}</Link>
+              </li>
             </ol>
           </div>
         </div>
@@ -29,41 +31,52 @@ const Page = ({ data }) => {
         <div className="container">
           <div className="row">
             <div className="col-md-12 mb-5">
-              <h3 className="font-weight-bold">{name}</h3>
+              <h3 className="font-weight-bold">{title}</h3>
             </div>
           </div>
 
           <div className="row">
             <div className="col-lg-12 col-md-12">
-            <div className="card">
-            <div className="card-body" style={{position:'relative'}}>
-            <div style={{position: 'relative'}}>
-                <Img fluid={image.fluid} />
-                <div className="d-flex position-absolute" style={{backgroundColor:'rgba(0,0,0,.4)', height:'100%', width:'100%', position:'absolute', top:0, left:0, justifyContent:'center', alignItems:'center'}}>
-                  <h2 className="text-light font-weight-bold">{title}</h2>
-                </div>
-                </div>
+              <div className="card">
+                <div className="card-body" style={{ position: 'relative' }}>
+                  <div style={{ position: 'relative' }}>
+                    <Img fluid={image.fluid} />
+                    <div
+                      className="d-flex position-absolute"
+                      style={{
+                        backgroundColor: 'rgba(0,0,0,.4)',
+                        height: '100%',
+                        width: '100%',
+                        position: 'absolute',
+                        top: 0,
+                        left: 0,
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                      }}
+                    >
+                      <h2 className="text-light font-weight-bold">{title}</h2>
+                    </div>
+                  </div>
 
-                <div className="mt-5" style={{fontSize:'15px', lineHeight:'34px'}} dangerouslySetInnerHTML={{__html: content}}></div>
+                  <div
+                    className="mt-5"
+                    style={{ fontSize: '15px', lineHeight: '34px' }}
+                    dangerouslySetInnerHTML={{ __html: content }}
+                  ></div>
                 </div>
-
-                </div>
-
+              </div>
             </div>
-
           </div>
           <div className="row">
-            <div className="col-lg-12">
-              
-            </div>
-            </div>
+            <div className="col-lg-12"></div>
+          </div>
 
           <div className="row">
             <div className="col-xl-8 col-lg-8 col-md-12">
               <div className="card">
                 <div className="card-header">
                   <h3 className="card-title">
-                    Know a place in  that isn't listed?
+                    Know a place in that isn't listed?
                   </h3>
                 </div>
                 <div className="card-body">
@@ -90,15 +103,14 @@ const Page = ({ data }) => {
 export const projectQuery = graphql`
   query($slug: String!) {
     page: datoCmsPage(slug: { eq: $slug }) {
-      
-        id
-        title
-        content
-        slug
-        image {
-          fluid(maxWidth: 600, imgixParams: { fm: "jpg", auto: "compress" }) {
-            ...GatsbyDatoCmsFluid
-          }
+      id
+      title
+      content
+      slug
+      image {
+        fluid(maxWidth: 600, imgixParams: { fm: "jpg", auto: "compress" }) {
+          ...GatsbyDatoCmsFluid
+        }
       }
     }
   }

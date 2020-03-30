@@ -18,7 +18,12 @@ function Listing(props) {
   var callLink = '';
 
   if (post.phone != null && post.phone.length > 0) {
-    callLink = 'tel:'+(post.phone.replace('(','-').replace(')','-').replace(' ',''));
+    callLink =
+      'tel:' +
+      post.phone
+        .replace('(', '-')
+        .replace(')', '-')
+        .replace(' ', '');
   }
   return (
     <div className="card mb-0">
@@ -52,16 +57,19 @@ function Listing(props) {
       <div className="card-footer">
         <div className="item-card2-footer">
           <div className="item-card2-footer-u">
-            {(post.link!=null&&post.link.length>0)?<a
-              className="btn btn-primary btn-block"
-              href={post.link}
-              target="_blank"
-            >
-              Purchase Gift Card
-            </a>:<a
-              className="btn btn-primary btn-block"
-              href={callLink}
-            >Call {post.phone}</a>}
+            {post.link != null && post.link.length > 0 ? (
+              <a
+                className="btn btn-primary btn-block"
+                href={post.link}
+                target="_blank"
+              >
+                Purchase Gift Card
+              </a>
+            ) : (
+              <a className="btn btn-primary btn-block" href={callLink}>
+                Call {post.phone}
+              </a>
+            )}
           </div>
         </div>
       </div>
